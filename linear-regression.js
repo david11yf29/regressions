@@ -15,6 +15,14 @@ class LinearRegression {
 
   gradientDescent() {
     const currentGuesses = this.features.matMul(this.weights);
+    const differences = currentGuesses.sub(this.labels);
+
+    const slopes = this.features
+      .transpose()
+      .matMul(differences)
+      .div(this.features.shape[0])
+
+    this.weights = this.weights.sub(slopes.mul(this.options.learningRate))
   }
 
   train() {
