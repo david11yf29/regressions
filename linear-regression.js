@@ -30,6 +30,10 @@ class LinearRegression {
       this.gradientDescent();
     }
   }
+
+  test (testFeatures, testLabels) {
+
+  }
 }
 
 module.exports = LinearRegression;
