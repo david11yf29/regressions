@@ -19,13 +19,18 @@ const regression = new LinearRegression(features, labels, {
 regression.train();
 const r2 = regression.test(testFeatures, testLabels);
 
-plot({
-  x: regression.bHistory,
-  y: regression.mseHistory.reverse(),
-  xLabel: 'Value of B',
+plot({ 
+  x: regression.mseHistory.reverse(),
+  xLabel: 'Iteration #',
   yLabel: 'Mean Squared Error'
 })
 
+
+console.log(regression.weights.arraySync());
+console.log("b", regression.weights.arraySync()[0]);
+console.log("x1", regression.weights.arraySync()[1]);
+console.log("x2", regression.weights.arraySync()[2]);
+console.log("x3", regression.weights.arraySync()[3]);
 // console.log("MSE History", regression.mseHistory);
 // console.log('R2 is', r2);
 
