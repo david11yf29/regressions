@@ -74,7 +74,7 @@ class LinearRegression {
   }
 
   recordMSE() {
-    const msc = this.features
+    const mse = this.features
       .matMul(this.weights)
       .sub(this.labels)
       .pow(2)
@@ -94,7 +94,7 @@ class LinearRegression {
     if (this.mseHistory[0] > this.mseHistory[1]) {
       this.options.learningRate = this.options.learningRate / 2;
     } else {
-      this.option.learningRate = this.options.learningRate * 1.05;
+      this.options.learningRate = this.options.learningRate * 1.05;
     }
   }
 }
