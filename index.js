@@ -13,7 +13,7 @@ const { features, labels, testFeatures, testLabels } = loadCSV('./cars.csv', {
 // console.log(features, labels);
 
 const regression = new LinearRegression(features, labels, {
-  learningRate: 0.1, iterations: 100
+  learningRate: 0.1, iterations: 100, batchSize: 10
 });
 
 regression.train();
