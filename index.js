@@ -3,17 +3,17 @@ const loadCSV = require('./load-csv');
 const LinearRegression = require('./linear-regression');
 const plot = require('node-remote-plot');
 
-const { features, labels, testFeatures, testLabels } = loadCSV('./cars.csv', {
+const { features, labels, testFeatures, testLabels } = loadCSV('./CarPrice_Assignment.csv', {
   shuffle: true,
   splitTest: 50,
-  dataColumns: ["horsepower", "weight", "displacement"],
-  labelColumns: ["mpg"]
+  dataColumns: ["curbweight", "horsepower", "highwaympg"],
+  labelColumns: ["pricee"]
 });
 
-// console.log(features, labels);
+console.log(features, labels);
 
 const regression = new LinearRegression(features, labels, {
-  learningRate: 0.1, iterations: 3, batchSize: 10
+  learningRate: 0.02, iterations: 40, batchSize: 10
 });
 
 regression.train();
@@ -30,11 +30,11 @@ console.log("x1", regression.weights.arraySync()[1]);
 console.log("x2", regression.weights.arraySync()[2]);
 console.log("x3", regression.weights.arraySync()[3]);
 // console.log("MSE History", regression.mseHistory);
-// console.log('R2 is', r2);
 
-regression.predict([
-  [120, 2, 380]
-]).print();
 // console.log('Updated M is: ', regression.weights.arraySync()[1], 'Updated B is: ', regression.weights.arraySync()[0]);
+
+// regression.predict([
+//   [3505,182,22]
+// ]).print();
 
 
